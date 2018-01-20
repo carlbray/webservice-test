@@ -1,10 +1,6 @@
 package com.carlbray.tests;
 
-import static io.restassured.RestAssured.*;
-
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -12,114 +8,86 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.carlbray.pojos.Organisation;
-import com.carlbray.pojos.Organisations;
 import com.carlbray.pojos.Sector;
+import com.carlbray.pojos.Service;
+import com.carlbray.unittests.PojoMapper;
 import com.carlbray.utils.CSVReader;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.http.Cookies;
-import io.restassured.specification.RequestSpecification;
 
 /*
+ * Assumptions:
+ * 1. Search is initiated on organisation.id
+ * 2. Organisation is returned in first 20 results
+ * 3. Service is up
  * 
  * Acceptance Criteria:
- * Name check = Inland Revenue Department
- * Sector Id check = 5
- * Sector Name check = Public Service
- * Description contains = “Treaty of Waitangi”
+ * 1. Name check = Inland Revenue Department
+ * 2. Sector Id check = 5
+ * 3. Sector Name check = Public Service
+ * 4. Description contains = “Treaty of Waitangi”
 */
 
 public class OrganisationTests {
 
-	private Cookies cookies;
-	private RequestSpecification requestSpec;
-	private Optional<Organisation> ird;
+	private static final String DATA_PROVIDER_METHOD = "getData";
+	private static final String TEST_DATA_CSV = "data\\org-test-data.csv";
+	private static final String BASE_PATH = "/api/v2/organisation/";
+	private static final String BASE_URI = "https://www.govt.nz";
 
-	@Test(dataProvider = "getData")
+	private Service service;
+
+	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkOrganisationName(String id, String name, String description, String sectorId, String sectorName) {
-		ird.ifPresent(check -> Assert.assertEquals(check.getName(),name));		
+		
+		Assert.assertEquals(findOrganisation(id).getName(),name);		
 	}
 	
-	@Test(dataProvider = "getData")
-	public void checkOrganisationDescriptionContains(String id, String name, String description, String sectorId, String sectorName) {		
-		ird.ifPresent(check -> Assert.assertTrue(check.getDescription().contains(description)));
+	@Test(dataProvider = DATA_PROVIDER_METHOD)
+	public void checkOrganisationDescriptionContains(String id, String name, String description, String sectorId, String sectorName) {
+		
+		Assert.assertTrue(findOrganisation(id).getDescription().contains(description));
 	}
 	
-	@Test(dataProvider = "getData")
+	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkSectorId(String id, String name, String description, String sectorId, String sectorName) {
-		Sector sector = ird.get().getSector();
+		
+		Sector sector = findOrganisation(id).getSector();
 		Assert.assertEquals(sector.getId(), Integer.valueOf(sectorId));
 	}		
 	
-	@Test(dataProvider = "getData")
+	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkSectorName(String id, String name, String description, String sectorId, String sectorName) {
-		Sector sector = ird.get().getSector();
+	
+		Sector sector = findOrganisation(id).getSector();
 		Assert.assertEquals(sector.getName(), sectorName);
 	}
 
 	@DataProvider	
 	public static String[][] getData() throws JsonParseException, JsonMappingException, IOException {
 		
-		return CSVReader.get("data\\org-test-data.csv");
+		return CSVReader.get(TEST_DATA_CSV);
 	}
 	
 	@BeforeClass
 	public void setUp() {
 
-		RestAssured.baseURI = "https://www.govt.nz";
-		RestAssured.basePath = "/api/v2/organisation/";
+		RestAssured.baseURI = BASE_URI;
+		RestAssured.basePath = BASE_PATH;
 		
-		buildRequestSpecification();
-		getCookies();
-		
-		Organisations organisations = given()
-				.spec(requestSpec)
-				.cookies(cookies)
-			.log()
-				.all()
-			.when()
-				.get("list")
-			.then()
-				.contentType(ContentType.JSON)
-				.extract()
-				.as(Organisations.class);
-		
-		ird = organisations.getOrganisations().stream()
-			.filter(org -> org.getId() == 926)
-			.findFirst();
+		PojoMapper<Service> pojoMapper = new PojoMapper<Service>();
+		service = pojoMapper.mapObjects("list", Service.class);
 	}
 
-	private void buildRequestSpecification() {
-		Map<String, String> headers = new HashMap<>();
-		headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
-		headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
-		headers.put("Accept-Encoding", "gzip, deflate");
+	private Organisation findOrganisation(String id) {
 		
-		requestSpec = new RequestSpecBuilder()
-				.addHeaders(headers)
-				.build();
-	}
-	
-	private void getCookies() {
-		String body = String.format("//json");
-		cookies = RestAssured.given()
-				.spec(requestSpec)
-				.auth()
-					.none()
-	            //.contentType(ContentType.JSON)
-				.log()
-					.all()					
-	            .when()
-		            .body(body)
-		            .get("list")
-	            .then()
-		            .statusCode(200)
-		            .extract()
-		            .response()
-		            .getDetailedCookies();
+		Optional<Organisation> organisation = service.getOrganisations().stream()
+			.filter(org -> org.getId() == 926)
+			.findFirst();
+		
+		Assert.assertTrue(organisation.isPresent(), "Organisation not found: " + id);
+		return organisation.get();
 	}
 }

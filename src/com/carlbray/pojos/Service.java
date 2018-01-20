@@ -1,11 +1,9 @@
-package com.carlbray;
+package com.carlbray.pojos;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.carlbray.pojos.Organisation;
-import com.carlbray.pojos.Query;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,7 +14,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "query", "organisations" })
-public class TEAssignment {
+public class Service {
 
 	@JsonProperty("query")
 	private Query query;
@@ -29,7 +27,7 @@ public class TEAssignment {
 	 * No args constructor for use in serialization
 	 * 
 	 */
-	public TEAssignment() {
+	public Service() {
 	}
 
 	/**
@@ -37,7 +35,7 @@ public class TEAssignment {
 	 * @param query
 	 * @param organisations
 	 */
-	public TEAssignment(Query query, List<Organisation> organisations) {
+	public Service(Query query, List<Organisation> organisations) {
 		super();
 		this.query = query;
 		this.organisations = organisations;
