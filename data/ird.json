@@ -1,0 +1,15 @@
+{
+	"organisations": [
+		{
+			"id": 926,
+			"name": "Inland Revenue Department",
+			"description": "Inland Revenue's mission is to provide quality tax and social policy services to Government.  We aim to maximise compliance with New Zealand's tax and social policy legislation through education, quality service and appropriate enforcement.\n\nInland Revenue provides service to all New Zealanders.  We work within the Inland Revenue Acts and other relevant laws to collect the bulk of the revenue needed by government to fund its programmes.  This revenue is used according to government priorities and funds many of the services that the New Zealand community wants and needs.  We also work in ways consistent with the spirit of the Treaty of Waitangi.\n\nInland Revenue:\n- collects approximately 80% of government's revenue \n- administers twenty-two types of taxes \n- collects and disburses child support \n- pays family assistance to those eligible \n- administers the collection of the Student Loan Scheme \n- deals with over 5.1 million taxpaying entities \n- works with over 4,000 tax agents, who represent about 1.5 million taxpayers \n- operates from 22 sites nationwide \n- employs over 4,500 staff.",
+			"sector": {
+				"id": 5,
+				"name": "Public Service",
+				"parentSector": "2"
+			},
+			"parent": 0
+		}
+	]
+}
