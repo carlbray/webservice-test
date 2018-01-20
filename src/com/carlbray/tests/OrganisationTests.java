@@ -20,7 +20,7 @@ import io.restassured.RestAssured;
 /*
  * Assumptions:
  * 1. Search is initiated on organisation.id
- * 2. Organisation is returned in first 20 results
+ * 2. Organisation is returned in first 20 results!
  * 3. Service is up
  * 
  * Acceptance Criteria:
@@ -28,15 +28,24 @@ import io.restassured.RestAssured;
  * 2. Sector Id check = 5
  * 3. Sector Name check = Public Service
  * 4. Description contains = “Treaty of Waitangi”
+ * 
 */
 
 public class OrganisationTests {
 
+	/** Method to be used by TestNG as the dataProvider */
 	private static final String DATA_PROVIDER_METHOD = "getData";
+	
+	/** File to be used to get the testing data from */
 	private static final String TEST_DATA_CSV = "data\\org-test-data.csv";
+	
+	/** Base path for service under test */
 	private static final String BASE_PATH = "/api/v2/organisation/";
+	
+	/** Base URI for service under test */
 	private static final String BASE_URI = "https://www.govt.nz";
 
+	/** Instance of the mapped response under test. */
 	private Service service;
 
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
@@ -65,6 +74,11 @@ public class OrganisationTests {
 		Assert.assertEquals(sector.getName(), sectorName);
 	}
 
+	/**
+	 * Gets the CSV data for the dataProvider.
+	 *
+	 * @return the data
+	 */
 	@DataProvider	
 	public static String[][] getData() throws JsonParseException, JsonMappingException, IOException {
 		
@@ -77,14 +91,22 @@ public class OrganisationTests {
 		RestAssured.baseURI = BASE_URI;
 		RestAssured.basePath = BASE_PATH;
 		
+		// Get the response and map it to Service so we can test against it.
 		PojoMapper<Service> pojoMapper = new PojoMapper<Service>();
-		service = pojoMapper.mapObjects("list", Service.class);
+		service = pojoMapper.mapJsonObjects("list", Service.class);
 	}
 
+	/**
+	 * Helper to find the right organisation in the response.
+	 * It will check the the organisation was found
+	 *
+	 * @param id the organisation id
+	 * @return the organisation
+	 */
 	private Organisation findOrganisation(String id) {
 		
 		Optional<Organisation> organisation = service.getOrganisations().stream()
-			.filter(org -> org.getId() == 926)
+			.filter(org -> org.getId().intValue() == Integer.parseInt(id))
 			.findFirst();
 		
 		Assert.assertTrue(organisation.isPresent(), "Organisation not found: " + id);
