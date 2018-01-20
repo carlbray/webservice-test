@@ -1,4 +1,4 @@
-package com.carlbray;
+package com.carlbray.pojos;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "offset", "count", "total" })
-public class Query {
+@JsonPropertyOrder({ "id", "name", "parentSector" })
+public class Sector {
 
-	@JsonProperty("offset")
-	private Integer offset;
-	@JsonProperty("count")
-	private Integer count;
-	@JsonProperty("total")
-	private Integer total;
+	@JsonProperty("id")
+	private Integer id;
+	@JsonProperty("name")
+	private String name;
+	@JsonProperty("parentSector")
+	private String parentSector;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -27,50 +27,50 @@ public class Query {
 	 * No args constructor for use in serialization
 	 * 
 	 */
-	public Query() {
+	public Sector() {
 	}
 
 	/**
 	 * 
-	 * @param total
-	 * @param count
-	 * @param offset
+	 * @param parentSector
+	 * @param id
+	 * @param name
 	 */
-	public Query(Integer offset, Integer count, Integer total) {
+	public Sector(Integer id, String name, String parentSector) {
 		super();
-		this.offset = offset;
-		this.count = count;
-		this.total = total;
+		this.id = id;
+		this.name = name;
+		this.parentSector = parentSector;
 	}
 
-	@JsonProperty("offset")
-	public Integer getOffset() {
-		return offset;
+	@JsonProperty("id")
+	public Integer getId() {
+		return id;
 	}
 
-	@JsonProperty("offset")
-	public void setOffset(Integer offset) {
-		this.offset = offset;
+	@JsonProperty("id")
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@JsonProperty("count")
-	public Integer getCount() {
-		return count;
+	@JsonProperty("name")
+	public String getName() {
+		return name;
 	}
 
-	@JsonProperty("count")
-	public void setCount(Integer count) {
-		this.count = count;
+	@JsonProperty("name")
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	@JsonProperty("total")
-	public Integer getTotal() {
-		return total;
+	@JsonProperty("parentSector")
+	public String getParentSector() {
+		return parentSector;
 	}
 
-	@JsonProperty("total")
-	public void setTotal(Integer total) {
-		this.total = total;
+	@JsonProperty("parentSector")
+	public void setParentSector(String parentSector) {
+		this.parentSector = parentSector;
 	}
 
 	@JsonAnyGetter
@@ -85,7 +85,7 @@ public class Query {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("offset", offset).append("count", count).append("total", total)
+		return new ToStringBuilder(this).append("id", id).append("name", name).append("parentSector", parentSector)
 				.append("additionalProperties", additionalProperties).toString();
 	}
 

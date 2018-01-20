@@ -6,7 +6,7 @@ import java.util.Arrays;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.carlbray.CSVReader;
+import com.carlbray.utils.CSVReader;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 class CSVReaderTest {

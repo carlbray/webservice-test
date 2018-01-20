@@ -1,4 +1,4 @@
-package com.carlbray;
+package com.carlbray.tests;
 
 import static io.restassured.RestAssured.*;
 
@@ -11,6 +11,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.carlbray.pojos.Organisation;
+import com.carlbray.pojos.Organisations;
+import com.carlbray.pojos.Sector;
+import com.carlbray.utils.CSVReader;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 

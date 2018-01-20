@@ -3,6 +3,9 @@ package com.carlbray;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.carlbray.pojos.Organisation;
+import com.carlbray.pojos.Query;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
