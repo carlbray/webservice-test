@@ -22,15 +22,14 @@ import io.restassured.RestAssured;
  * 1. Search is initiated on organisation.id
  * 2. Organisation is returned in first 20 results!
  * 3. Service is up
+ * 4. Organisation id only appears once in the response
  * 
  * Acceptance Criteria:
  * 1. Name check = Inland Revenue Department
  * 2. Sector Id check = 5
  * 3. Sector Name check = Public Service
- * 4. Description contains = “Treaty of Waitangi”
- * 
+ * 4. Description contains = “Treaty of Waitangi” 
 */
-
 public class OrganisationTests {
 
 	/** Method to be used by TestNG as the dataProvider */
