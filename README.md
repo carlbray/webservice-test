@@ -9,7 +9,7 @@ clone https://github.com/carlbray/webservice-test.git
 cd webservice-test
 mvn test
 ```
-This will run the OrganisationTest and create a test report in target/surefire-reports/index.html
+This will run the **com.carlbray.test.OrganisationTest** and create a test report in target/surefire-reports/index.html
 
 ## Framework Design
 To ensure the tests are easy to maintain and aren't brittle I built a number of features into this framework.
