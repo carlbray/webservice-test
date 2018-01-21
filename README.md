@@ -9,14 +9,14 @@ clone https://github.com/carlbray/webservice-test.git
 cd webservice-test
 mvn test
 ```
-This will run the **com.carlbray.test.OrganisationTest** and create a test report in target/surefire-reports/index.html
+This will run the **com.carlbray.test.OrganisationTest** and create a test report in **target/surefire-reports/index.html**
 
 ## Framework Design
 To ensure the tests are easy to maintain and aren't brittle I built a number of features into this framework.
 ### Mapping Json
-I mapped the Json objects into Plain Old Java Oblects (POJO) using http://www.jsonschema2pojo.org/ to generate them.
+I mapped the Json objects into Plain Old Java Oblects (POJO) using http://www.jsonschema2pojo.org/ This generates Jackson https://github.com/FasterXML annotated POJO classes.
 
-The copied each pojo into the **com.carlbray.pojos** package.
+Then copied each pojo into the **com.carlbray.pojos** package.
 
 ### Calling the Service
 I used REST-Assured https://github.com/rest-assured/rest-assured to simplify the work of calling the service.
@@ -33,3 +33,4 @@ I put the data used in the testing in to a CSV file **data/org-test-data.csv** s
 * https://github.com/rest-assured/rest-assured
 * http://www.jsonschema2pojo.org/
 * http://testng.org
+* https://github.com/FasterXML
