@@ -30,7 +30,7 @@ import io.restassured.RestAssured;
  * 3. Sector Name check = Public Service
  * 4. Description contains = “Treaty of Waitangi” 
 */
-public class OrganisationTests {
+public class OrganisationTest {
 
 	/** Method to be used by TestNG as the dataProvider */
 	private static final String DATA_PROVIDER_METHOD = "getData";
