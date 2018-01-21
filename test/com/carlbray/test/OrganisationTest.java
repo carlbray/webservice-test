@@ -1,4 +1,4 @@
-package com.carlbray.tests;
+package com.carlbray.test;
 
 import java.io.IOException;
 import java.util.Optional;

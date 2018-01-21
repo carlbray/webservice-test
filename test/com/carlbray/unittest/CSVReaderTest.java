@@ -1,4 +1,4 @@
-package com.carlbray.unittests;
+package com.carlbray.unittest;
 
 import java.io.IOException;
 import java.util.Arrays;
