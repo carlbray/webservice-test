@@ -25,6 +25,22 @@ public class RestUtils {
 			.addHeader("Accept-Encoding", "gzip, deflate")
 			.build();
 	}
+	
+	/**
+	 * Builds the default request specification with the URI and Path.
+	 *
+	 * @param baseURI the base URI
+	 * @param basePath the base path
+	 * @return the request specification
+	 */
+	public static RequestSpecification buildDefaultRequestSpecification(String baseURI, String basePath) {
+		
+		return new RequestSpecBuilder()
+				.addRequestSpecification(buildDefaultRequestSpecification())
+				.setBaseUri(baseURI)
+				.setBasePath(basePath)
+				.build();
+	}
 
 	/**
 	 * Gets the cookies.

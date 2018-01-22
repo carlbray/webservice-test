@@ -90,10 +90,7 @@ public class OrganisationTest {
 	@BeforeClass
 	public void setUp() {
 
-		RestAssured.baseURI = BASE_URI;
-		RestAssured.basePath = BASE_PATH;
-		
-		RestAssured.requestSpecification = RestUtils.buildDefaultRequestSpecification();
+		RestAssured.requestSpecification = RestUtils.buildDefaultRequestSpecification(BASE_URI, BASE_PATH);
 		RestAssured.responseSpecification = RestUtils.buildDefaultResponseSpecification();
 		
 		// Get the response and map it to the Service POJO so we can test against it.
