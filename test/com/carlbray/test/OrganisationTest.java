@@ -11,7 +11,7 @@ import com.carlbray.pojos.Organisation;
 import com.carlbray.pojos.Sector;
 import com.carlbray.pojos.Service;
 import com.carlbray.utils.CSVReader;
-import com.carlbray.utils.PojoMapper;
+import com.carlbray.utils.RestUtils;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -31,6 +31,9 @@ import io.restassured.RestAssured;
  * 4. Description contains = “Treaty of Waitangi” 
 */
 public class OrganisationTest {
+
+	/** Command path for service under test */
+	private static final String PATH_UNDER_TEST = "list";
 
 	/** Method to be used by TestNG as the dataProvider */
 	private static final String DATA_PROVIDER_METHOD = "getData";
@@ -90,9 +93,11 @@ public class OrganisationTest {
 		RestAssured.baseURI = BASE_URI;
 		RestAssured.basePath = BASE_PATH;
 		
-		// Get the response and map it to Service so we can test against it.
-		PojoMapper<Service> pojoMapper = new PojoMapper<Service>();
-		service = pojoMapper.mapJsonObjects("list", Service.class);
+		RestAssured.requestSpecification = RestUtils.buildDefaultRequestSpecification();
+		RestAssured.responseSpecification = RestUtils.buildDefaultResponseSpecification();
+		
+		// Get the response and map it to the Service POJO so we can test against it.
+		service = RestUtils.mapJsonObjects(PATH_UNDER_TEST, Service.class);
 	}
 
 	/**
