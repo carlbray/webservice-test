@@ -7,6 +7,8 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
+import io.restassured.response.ExtractableResponse;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
@@ -74,18 +76,19 @@ public class RestUtils {
 		
 		Cookies cookies = RestUtils.getCookies();
 		
-		return given()
+		ExtractableResponse<Response> response = given()
 				.cookies(cookies)
 			.log()
 				.all()
 			.when()
 				.get(path)
 			.then()
-				.log()
-					.all()
+//				.log()
+//					.all()
 				.contentType(ContentType.JSON)
-				.extract()
-				.as(pojo);
+				.extract();
+		
+		return response.as(pojo);
 	}
 
 	/**

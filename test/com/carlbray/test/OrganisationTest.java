@@ -16,13 +16,13 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
 
 /*
  * Assumptions:
  * 1. Search is initiated on organisation.id
- * 2. Organisation is returned in first 20 results!
- * 3. Service is up
- * 4. Organisation id only appears once in the response
+ * 2. Organisation id only appears once in the response
  * 
  * Acceptance Criteria:
  * 1. Name check = Inland Revenue Department
@@ -31,6 +31,15 @@ import io.restassured.RestAssured;
  * 4. Description contains = “Treaty of Waitangi” 
 */
 public class OrganisationTest {
+
+	/** Query parameters to limit the results */
+	private static final String QUERY_PARAM_LIMIT_KEY = "limit";
+	
+	/**
+	 * Query parameters to limit value as define on
+	 * https://www.govt.nz/about/about-this-website/api/
+	 */
+	private static final String QUERY_PARAM_LIMIT_VALUE = "all";
 
 	/** Command path for service under test */
 	private static final String PATH_UNDER_TEST = "list";
@@ -90,7 +99,12 @@ public class OrganisationTest {
 	@BeforeClass
 	public void setUp() {
 
-		RestAssured.requestSpecification = RestUtils.buildDefaultRequestSpecification(BASE_URI, BASE_PATH);
+		RequestSpecification requestSpecification = new RequestSpecBuilder()
+				.addRequestSpecification(RestUtils.buildDefaultRequestSpecification(BASE_URI, BASE_PATH))
+				.addQueryParam(QUERY_PARAM_LIMIT_KEY, QUERY_PARAM_LIMIT_VALUE)
+				.build();
+		
+		RestAssured.requestSpecification = requestSpecification;
 		RestAssured.responseSpecification = RestUtils.buildDefaultResponseSpecification();
 		
 		// Get the response and map it to the Service POJO so we can test against it.
