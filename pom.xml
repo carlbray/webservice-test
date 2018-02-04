@@ -53,5 +53,10 @@
   		<artifactId>testng</artifactId>
   		<version>6.13.1</version>
   	</dependency>
+    <dependency>
+        <groupId>org.jsonschema2pojo</groupId>
+        <artifactId>jsonschema2pojo-core</artifactId>
+        <version>0.5.1</version>
+    </dependency>  	
   </dependencies>
 </project>

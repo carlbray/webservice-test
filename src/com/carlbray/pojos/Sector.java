@@ -1,3 +1,4 @@
+
 package com.carlbray.pojos;
 
 import java.util.HashMap;
@@ -8,85 +9,107 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "id", "name", "parentSector" })
+@JsonPropertyOrder({
+    "id",
+    "name",
+    "parentSector"
+})
 public class Sector {
 
-	@JsonProperty("id")
-	private Integer id;
-	@JsonProperty("name")
-	private String name;
-	@JsonProperty("parentSector")
-	private String parentSector;
-	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonProperty("id")
+    private int id;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("parentSector")
+    private String parentSector;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	/**
-	 * No args constructor for use in serialization
-	 * 
-	 */
-	public Sector() {
-	}
+    @JsonProperty("id")
+    public int getId() {
+        return id;
+    }
 
-	/**
-	 * 
-	 * @param parentSector
-	 * @param id
-	 * @param name
-	 */
-	public Sector(Integer id, String name, String parentSector) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.parentSector = parentSector;
-	}
+    @JsonProperty("id")
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	@JsonProperty("id")
-	public Integer getId() {
-		return id;
-	}
+    public Sector withId(int id) {
+        this.id = id;
+        return this;
+    }
 
-	@JsonProperty("id")
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
 
-	@JsonProperty("name")
-	public String getName() {
-		return name;
-	}
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@JsonProperty("name")
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Sector withName(String name) {
+        this.name = name;
+        return this;
+    }
 
-	@JsonProperty("parentSector")
-	public String getParentSector() {
-		return parentSector;
-	}
+    @JsonProperty("parentSector")
+    public String getParentSector() {
+        return parentSector;
+    }
 
-	@JsonProperty("parentSector")
-	public void setParentSector(String parentSector) {
-		this.parentSector = parentSector;
-	}
+    @JsonProperty("parentSector")
+    public void setParentSector(String parentSector) {
+        this.parentSector = parentSector;
+    }
 
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
+    public Sector withParentSector(String parentSector) {
+        this.parentSector = parentSector;
+        return this;
+    }
 
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
 
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this).append("id", id).append("name", name).append("parentSector", parentSector)
-				.append("additionalProperties", additionalProperties).toString();
-	}
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    public Sector withAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("id", id).append("name", name).append("parentSector", parentSector).append("additionalProperties", additionalProperties).toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(name).append(parentSector).append(id).append(additionalProperties).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if ((other instanceof Sector) == false) {
+            return false;
+        }
+        Sector rhs = ((Sector) other);
+        return new EqualsBuilder().append(name, rhs.name).append(parentSector, rhs.parentSector).append(id, rhs.id).append(additionalProperties, rhs.additionalProperties).isEquals();
+    }
 
 }

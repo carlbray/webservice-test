@@ -77,7 +77,7 @@ public class OrganisationTest {
 	public void checkSectorId(String id, String name, String description, String sectorId, String sectorName) {
 		
 		Sector sector = findOrganisation(id).getSector();
-		Assert.assertEquals(sector.getId(), Integer.valueOf(sectorId));
+		Assert.assertEquals(sector.getId(), Integer.parseInt(sectorId));
 	}		
 	
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
@@ -122,8 +122,7 @@ public class OrganisationTest {
 	 */
 	private Organisation findOrganisation(String id) {
 		
-		// Look at generating POJO's as primitives?? Document options on my page
-		Predicate<? super Organisation> predicate = org -> org.getId().intValue() == Integer.parseInt(id);
+		Predicate<? super Organisation> predicate = org -> org.getId() == Integer.parseInt(id);
 		Optional<Organisation> organisation = service.getOrganisations().stream()
 			.filter(predicate)
 			.findFirst();

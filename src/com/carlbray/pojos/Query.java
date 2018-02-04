@@ -1,3 +1,4 @@
+
 package com.carlbray.pojos;
 
 import java.util.HashMap;
@@ -8,85 +9,107 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "offset", "count", "total" })
+@JsonPropertyOrder({
+    "offset",
+    "count",
+    "total"
+})
 public class Query {
 
-	@JsonProperty("offset")
-	private Integer offset;
-	@JsonProperty("count")
-	private Integer count;
-	@JsonProperty("total")
-	private Integer total;
-	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonProperty("offset")
+    private int offset;
+    @JsonProperty("count")
+    private int count;
+    @JsonProperty("total")
+    private int total;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	/**
-	 * No args constructor for use in serialization
-	 * 
-	 */
-	public Query() {
-	}
+    @JsonProperty("offset")
+    public int getOffset() {
+        return offset;
+    }
 
-	/**
-	 * 
-	 * @param total
-	 * @param count
-	 * @param offset
-	 */
-	public Query(Integer offset, Integer count, Integer total) {
-		super();
-		this.offset = offset;
-		this.count = count;
-		this.total = total;
-	}
+    @JsonProperty("offset")
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
 
-	@JsonProperty("offset")
-	public Integer getOffset() {
-		return offset;
-	}
+    public Query withOffset(int offset) {
+        this.offset = offset;
+        return this;
+    }
 
-	@JsonProperty("offset")
-	public void setOffset(Integer offset) {
-		this.offset = offset;
-	}
+    @JsonProperty("count")
+    public int getCount() {
+        return count;
+    }
 
-	@JsonProperty("count")
-	public Integer getCount() {
-		return count;
-	}
+    @JsonProperty("count")
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-	@JsonProperty("count")
-	public void setCount(Integer count) {
-		this.count = count;
-	}
+    public Query withCount(int count) {
+        this.count = count;
+        return this;
+    }
 
-	@JsonProperty("total")
-	public Integer getTotal() {
-		return total;
-	}
+    @JsonProperty("total")
+    public int getTotal() {
+        return total;
+    }
 
-	@JsonProperty("total")
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
+    @JsonProperty("total")
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
+    public Query withTotal(int total) {
+        this.total = total;
+        return this;
+    }
 
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
 
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this).append("offset", offset).append("count", count).append("total", total)
-				.append("additionalProperties", additionalProperties).toString();
-	}
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    public Query withAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("offset", offset).append("count", count).append("total", total).append("additionalProperties", additionalProperties).toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(count).append(total).append(additionalProperties).append(offset).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if ((other instanceof Query) == false) {
+            return false;
+        }
+        Query rhs = ((Query) other);
+        return new EqualsBuilder().append(count, rhs.count).append(total, rhs.total).append(additionalProperties, rhs.additionalProperties).append(offset, rhs.offset).isEquals();
+    }
 
 }
