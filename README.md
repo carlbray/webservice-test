@@ -13,10 +13,16 @@ This will run the **com.carlbray.test.OrganisationTest** and create a test repor
 
 ## Framework Design
 To ensure the tests are easy to maintain and aren't brittle I built a number of features into this framework.
-### Mapping Json
+### Mapping JSON (JavaScript Object Notation)
+Map the JSON objects into Plain Old Java Objects (POJO)
+
+Run the JsonSchema2Pojo class. This class generates POJO classes from the referenced JSON file.
+
+*Alternatively - do it by hand*
+
 I mapped the Json objects into Plain Old Java Objects (POJO) using http://www.jsonschema2pojo.org/ This generates Jackson https://github.com/FasterXML annotated POJO classes.
 
-Then copied each pojo into the **com.carlbray.pojos** package.
+Then copied each POJO into the **com.carlbray.pojos** package.
 
 ### Calling the Service
 I used REST-Assured https://github.com/rest-assured/rest-assured to simplify the work of calling the service.
