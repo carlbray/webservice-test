@@ -2,6 +2,8 @@ package com.carlbray.test;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.function.Predicate;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -120,8 +122,10 @@ public class OrganisationTest {
 	 */
 	private Organisation findOrganisation(String id) {
 		
+		// Look at generating POJO's as primitives?? Document options on my page
+		Predicate<? super Organisation> predicate = org -> org.getId().intValue() == Integer.parseInt(id);
 		Optional<Organisation> organisation = service.getOrganisations().stream()
-			.filter(org -> org.getId().intValue() == Integer.parseInt(id))
+			.filter(predicate)
 			.findFirst();
 		
 		Assert.assertTrue(organisation.isPresent(), "Organisation not found: " + id);
