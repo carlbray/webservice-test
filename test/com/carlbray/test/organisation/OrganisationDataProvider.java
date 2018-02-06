@@ -1,4 +1,4 @@
-package com.carlbray.test;
+package com.carlbray.test.organisation;
 
 import java.io.IOException;
 

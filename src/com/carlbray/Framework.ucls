@@ -1,34 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.carlbray.pojos.Organisation" project="TEAssignment" 
-    file="/TEAssignment/src/com/carlbray/pojos/Organisation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="549" width="387" x="796" y="1007"/>    
+  <class id="1" language="java" name="com.carlbray.test.organisation.OrganisationTest" project="TEAssignment" 
+    file="/TEAssignment/test/com/carlbray/test/organisation/OrganisationTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="395" x="360" y="176"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="com.carlbray.pojos.Sector" project="TEAssignment" 
-    file="/TEAssignment/src/com/carlbray/pojos/Sector.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="387" x="339" y="1596"/>    
+  <class id="2" language="java" name="com.carlbray.test.organisation.OrganisationDataProvider" project="TEAssignment" 
+    file="/TEAssignment/test/com/carlbray/test/organisation/OrganisationDataProvider.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="277" x="41" y="423"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="com.carlbray.pojos.Service" project="TEAssignment" 
-    file="/TEAssignment/src/com/carlbray/pojos/Service.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="387" x="796" y="634"/>    
+  <class id="3" language="java" name="com.carlbray.test.RestTest" project="TEAssignment" 
+    file="/TEAssignment/test/com/carlbray/test/RestTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="249" x="909" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.carlbray.utils.CSVReader" project="TEAssignment" 
+  <class id="4" language="java" name="com.carlbray.test.organisation.query.QueryTest" project="TEAssignment" 
+    file="/TEAssignment/test/com/carlbray/test/organisation/query/QueryTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="163" x="1458" y="176"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="com.carlbray.fetchers.Fetchable" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/fetchers/Fetchable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="126" x="1041" y="423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="com.carlbray.fetchers.organisation.OrganisationFetcher" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/fetchers/organisation/OrganisationFetcher.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="205" x="400" y="423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.carlbray.fetchers.organisation.QueryFetcher" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/fetchers/organisation/QueryFetcher.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="155" x="1262" y="423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.carlbray.fetchers.organisation.ServiceFetcher" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/fetchers/organisation/ServiceFetcher.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="623" x="795" y="176"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.carlbray.pojos.organisation.Service" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/pojos/organisation/Service.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="387" x="854" y="634"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.carlbray.pojos.organisation.Organisation" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/pojos/organisation/Organisation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="387" x="400" y="989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.carlbray.pojos.organisation.Sector" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/pojos/organisation/Sector.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="387" x="339" y="1578"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.carlbray.pojos.organisation.Query" project="TEAssignment" 
+    file="/TEAssignment/src/com/carlbray/pojos/organisation/Query.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="387" x="1234" y="989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.carlbray.utils.CSVReader" project="TEAssignment" 
     file="/TEAssignment/src/com/carlbray/utils/CSVReader.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="120" x="41" y="634"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -37,135 +120,131 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.carlbray.utils.RestUtils" project="TEAssignment" 
+  <class id="14" language="java" name="com.carlbray.utils.RestUtils" project="TEAssignment" 
     file="/TEAssignment/src/com/carlbray/utils/RestUtils.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="356" x="379" y="634"/>    
+    <position height="171" width="356" x="645" y="423"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.carlbray.test.OrganisationTest" project="TEAssignment" 
-    file="/TEAssignment/test/com/carlbray/test/OrganisationTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="395" x="537" y="176"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="com.carlbray.test.OrganisationDataProvider" project="TEAssignment" 
-    file="/TEAssignment/test/com/carlbray/test/OrganisationDataProvider.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="277" x="41" y="405"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="com.carlbray.test.RestTest" project="TEAssignment" 
-    file="/TEAssignment/test/com/carlbray/test/RestTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="249" x="537" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="com.carlbray.test.OrganisationFetcher" project="TEAssignment" 
-    file="/TEAssignment/test/com/carlbray/test/OrganisationFetcher.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="238" x="537" y="405"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <dependency id="10">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <association id="11">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="12" name="organisations">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="13" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="14">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
   <dependency id="15">    
     <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="TARGET" refId="9"/>  
   </dependency>  
-  <dependency id="16">    
-    <bendpoint x="348" y="405"/>    
-    <bendpoint x="348" y="634"/>    
-    <bendpoint x="348" y="1007"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <association id="17">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="18" name="service"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="21" name="fetcher"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+  <association id="16">    
+    <bendpoint x="1197" y="423"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="17" name="service"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="23">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <association id="24">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="25" name="sector">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <association id="19">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="20" name="sector"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="23">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="24" name="fetcher"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
   <dependency id="27">    
-    <bendpoint x="765" y="634"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="1"/>  
+    <bendpoint x="348" y="423"/>    
+    <bendpoint x="348" y="634"/>    
+    <bendpoint x="348" y="989"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
   </dependency>  
   <dependency id="28">    
-    <bendpoint x="805" y="405"/>    
+    <bendpoint x="409" y="634"/>    
     <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="TARGET" refId="10"/>  
   </dependency>  
   <dependency id="29">    
-    <bendpoint x="467" y="405"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="5"/>  
+    <bendpoint x="1271" y="634"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
   </dependency>  
   <dependency id="30">    
-    <bendpoint x="1213" y="405"/>    
-    <bendpoint x="1213" y="634"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
   </dependency>  
+  <realization id="31">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="33">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="34" name="organisations"/>      
+      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="37">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="38" name="query"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="40">    
+    <bendpoint x="369" y="423"/>    
+    <bendpoint x="369" y="634"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <association id="45">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="46" name="fetcher"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

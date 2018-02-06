@@ -1,20 +1,21 @@
-package com.carlbray.test;
+package com.carlbray.fetchers.organisation;
 
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.Collections;
+import java.util.Map;
 
-import org.testng.Assert;
-
-import com.carlbray.pojos.Organisation;
-import com.carlbray.pojos.Service;
+import com.carlbray.fetchers.Fetchable;
+import com.carlbray.pojos.organisation.Service;
 import com.carlbray.utils.RestUtils;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
-public class OrganisationFetcher {
+public class ServiceFetcher implements Fetchable {
 
+	/** Base URI for service under test */
+	protected static final String BASE_URI = "https://www.govt.nz";
+	
 	/** Query parameters to limit the results */
 	private static final String QUERY_PARAM_LIMIT_KEY = "limit";
 
@@ -23,6 +24,8 @@ public class OrganisationFetcher {
 	 * https://www.govt.nz/about/about-this-website/api/
 	 */
 	private static final String QUERY_PARAM_LIMIT_VALUE = "all";
+	
+	private static final Map<String, ?> PARAMETERS_MAP = Collections.singletonMap(QUERY_PARAM_LIMIT_KEY, QUERY_PARAM_LIMIT_VALUE);
 
 	/** Command path for service under test */
 	private static final String PATH_UNDER_TEST = "list";
@@ -30,39 +33,24 @@ public class OrganisationFetcher {
 	/** Base path for service under test */
 	private static final String BASE_PATH = "/api/v2/organisation/";
 
-	/** Base URI for service under test */
-	protected static final String BASE_URI = "https://www.govt.nz";
-
 	/** Instance of the mapped response under test. */
-	private final Service service;
-
-	public OrganisationFetcher() {
+	private final Service service;	
+	
+	public ServiceFetcher() {
 
 		RequestSpecification requestSpecification = new RequestSpecBuilder()
 				.addRequestSpecification(RestUtils.buildDefaultRequestSpecification(BASE_URI, BASE_PATH))
-				.addQueryParam(QUERY_PARAM_LIMIT_KEY, QUERY_PARAM_LIMIT_VALUE).build();
+				.addQueryParams(PARAMETERS_MAP).build();
 
 		RestAssured.requestSpecification = requestSpecification;
 		RestAssured.responseSpecification = RestUtils.buildDefaultResponseSpecification();
-
+		
 		// Get the response and map it to the Service POJO so we can test against it.
-		service = RestUtils.mapJsonObjects(PATH_UNDER_TEST, Service.class);
+		service = RestUtils.mapJsonObjects(PATH_UNDER_TEST, Service.class);		
 	}
 
-	/**
-	 * Helper to find the right organisation in the response. It will check the the
-	 * organisation was found
-	 *
-	 * @param id
-	 *            the organisation id
-	 * @return the organisation
-	 */
-	public Organisation findOrganisation(String id) {
-
-		Predicate<? super Organisation> predicate = org -> org.getId() == Integer.parseInt(id);
-		Optional<Organisation> organisation = service.getOrganisations().stream().filter(predicate).findFirst();
-
-		Assert.assertTrue(organisation.isPresent(), "Organisation not found: " + id);
-		return organisation.get();
+	@Override
+	public Service getService() {
+		return service;
 	}
 }

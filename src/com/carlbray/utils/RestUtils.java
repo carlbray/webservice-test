@@ -5,7 +5,6 @@ import static io.restassured.RestAssured.given;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
@@ -83,9 +82,8 @@ public class RestUtils {
 			.when()
 				.get(path)
 			.then()
-//				.log()
-//					.all()
-				.contentType(ContentType.JSON)
+				.log()
+					.ifError()
 				.extract();
 		
 		return response.as(pojo);

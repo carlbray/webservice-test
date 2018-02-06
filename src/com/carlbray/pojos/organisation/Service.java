@@ -1,5 +1,5 @@
 
-package com.carlbray.pojos;
+package com.carlbray.pojos.organisation;
 
 import java.util.ArrayList;
 import java.util.HashMap;

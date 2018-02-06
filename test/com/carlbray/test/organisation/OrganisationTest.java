@@ -1,4 +1,4 @@
-package com.carlbray.test;
+package com.carlbray.test.organisation;
 
 import java.io.IOException;
 import org.testng.Assert;
@@ -6,7 +6,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.carlbray.pojos.Sector;
+import com.carlbray.fetchers.organisation.OrganisationFetcher;
+import com.carlbray.pojos.organisation.Sector;
+import com.carlbray.test.RestTest;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
