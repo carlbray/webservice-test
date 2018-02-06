@@ -18,7 +18,7 @@ import com.sun.codemodel.JCodeModel;
 public class JsonSchema2Pojo {
 
 	private static final String SRC_FOLDER = "src";
-	private static final String POJO_JAVA_PACKAGE = "com.carlbray.pojos";
+	private static final String POJO_JAVA_PACKAGE = "com.carlbray.pojos.organisation";
 	private static final String ROOT_CLASS_NAME = "Service";
 	private static final String EXPECTED_RESPONSE_JSON = "file:data/expectedResponse.json";
 
