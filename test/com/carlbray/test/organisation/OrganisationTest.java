@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
  * 1. Name check = Inland Revenue Department
  * 2. Sector Id check = 5
  * 3. Sector Name check = Public Service
- * 4. Description contains = “Treaty of Waitangi” 
+ * 4. Description contains = ï¿½Treaty of Waitangiï¿½ 
 */
 public class OrganisationTest extends RestTest {
 
