@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.carlbray.fetchers.organisation.QueryFetcher;
+import com.carlbray.api.v2.organisation.QueryFetcher;
 import com.carlbray.test.RestTest;
 
 public class QueryTest extends RestTest {

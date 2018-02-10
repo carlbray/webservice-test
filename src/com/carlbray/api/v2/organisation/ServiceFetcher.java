@@ -1,4 +1,4 @@
-package com.carlbray.fetchers.organisation;
+package com.carlbray.api.v2.organisation;
 
 import java.util.Collections;
 import java.util.Map;

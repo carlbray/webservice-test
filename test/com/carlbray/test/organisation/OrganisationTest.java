@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.carlbray.fetchers.organisation.OrganisationFetcher;
+import com.carlbray.api.v2.organisation.OrganisationFetcher;
 import com.carlbray.pojos.organisation.Sector;
 import com.carlbray.test.RestTest;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -30,26 +30,26 @@ public class OrganisationTest extends RestTest {
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkOrganisationName(String id, String name, String description, String sectorId, String sectorName) {
 		
-		Assert.assertEquals(fetcher.findOrganisation(id).getName(),name);		
+		Assert.assertEquals(fetcher.getOrganisation(id).getName(),name);		
 	}
 	
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkOrganisationDescriptionContains(String id, String name, String description, String sectorId, String sectorName) {
 		
-		Assert.assertTrue(fetcher.findOrganisation(id).getDescription().contains(description));
+		Assert.assertTrue(fetcher.getOrganisation(id).getDescription().contains(description));
 	}
 	
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkSectorId(String id, String name, String description, String sectorId, String sectorName) {
 		
-		Sector sector = fetcher.findOrganisation(id).getSector();
+		Sector sector = fetcher.getOrganisation(id).getSector();
 		Assert.assertEquals(sector.getId(), Integer.parseInt(sectorId));
 	}		
 	
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkSectorName(String id, String name, String description, String sectorId, String sectorName) {
 	
-		Sector sector = fetcher.findOrganisation(id).getSector();
+		Sector sector = fetcher.getOrganisation(id).getSector();
 		Assert.assertEquals(sector.getName(), sectorName);
 	}
 

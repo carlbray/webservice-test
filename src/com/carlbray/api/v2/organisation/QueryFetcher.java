@@ -1,4 +1,4 @@
-package com.carlbray.fetchers.organisation;
+package com.carlbray.api.v2.organisation;
 
 public class QueryFetcher extends ServiceFetcher {
 

@@ -1,4 +1,4 @@
-package com.carlbray.fetchers.organisation;
+package com.carlbray.api.v2.organisation;
 
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -17,7 +17,7 @@ public class OrganisationFetcher extends ServiceFetcher {
 	 *            the organisation id
 	 * @return the organisation
 	 */
-	public Organisation findOrganisation(String id) {
+	public Organisation getOrganisation(String id) {
 
 		Predicate<? super Organisation> predicate = org -> org.getId() == Integer.parseInt(id);
 		Optional<Organisation> organisation = getService().getOrganisations().stream().filter(predicate).findFirst();
