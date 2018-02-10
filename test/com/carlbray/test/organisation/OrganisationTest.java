@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.carlbray.api.v2.organisation.OrganisationFetcher;
+import com.carlbray.api.v2.organisation.TestableOrganisation;
 import com.carlbray.pojos.organisation.Sector;
 import com.carlbray.test.RestTest;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -25,7 +26,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 */
 public class OrganisationTest extends RestTest {
 
-	private OrganisationFetcher fetcher;
+	private TestableOrganisation fetcher;
 
 	@Test(dataProvider = DATA_PROVIDER_METHOD)
 	public void checkOrganisationName(String id, String name, String description, String sectorId, String sectorName) {

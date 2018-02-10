@@ -5,11 +5,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.carlbray.api.v2.organisation.QueryFetcher;
+import com.carlbray.api.v2.organisation.TestableQuery;
 import com.carlbray.test.RestTest;
 
 public class QueryTest extends RestTest {
 	
-	private QueryFetcher fetcher;
+	private TestableQuery fetcher;
 	
 	@Test
 	public void checkCountTest() {

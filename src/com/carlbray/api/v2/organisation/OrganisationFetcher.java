@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import com.carlbray.pojos.organisation.Organisation;
 
-public class OrganisationFetcher extends ServiceFetcher {
+public class OrganisationFetcher extends ServiceFetcher implements TestableOrganisation {
 
 	/**
 	 * Helper to find the right organisation in the response. It will check the the
@@ -17,6 +17,7 @@ public class OrganisationFetcher extends ServiceFetcher {
 	 *            the organisation id
 	 * @return the organisation
 	 */
+	@Override
 	public Organisation getOrganisation(String id) {
 
 		Predicate<? super Organisation> predicate = org -> org.getId() == Integer.parseInt(id);
