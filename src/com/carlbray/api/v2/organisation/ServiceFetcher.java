@@ -38,15 +38,20 @@ public class ServiceFetcher implements Fetchable {
 	
 	public ServiceFetcher() {
 
+		setUpRestAssured();
+		
+		// Get the response and map it to the Service POJO so we can test against it.
+		service = RestUtils.mapJsonObjects(PATH_UNDER_TEST, Service.class);		
+	}
+
+	private static void setUpRestAssured() {
 		RequestSpecification requestSpecification = new RequestSpecBuilder()
 				.addRequestSpecification(RestUtils.buildDefaultRequestSpecification(BASE_URI, BASE_PATH))
 				.addQueryParams(PARAMETERS_MAP).build();
 
+		// RestAssured uses static vars to setup the connection
 		RestAssured.requestSpecification = requestSpecification;
 		RestAssured.responseSpecification = RestUtils.buildDefaultResponseSpecification();
-		
-		// Get the response and map it to the Service POJO so we can test against it.
-		service = RestUtils.mapJsonObjects(PATH_UNDER_TEST, Service.class);		
 	}
 
 	@Override
