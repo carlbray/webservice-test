@@ -39,11 +39,6 @@ public class JsonSchema2Pojo {
 			}
 
 			@Override
-			public boolean isUseCommonsLang3() {
-				return true;
-			}
-
-			@Override
 			public boolean isIncludeGetters() {
 				return true;
 			}
