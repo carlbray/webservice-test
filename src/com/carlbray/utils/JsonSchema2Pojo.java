@@ -2,6 +2,7 @@ package com.carlbray.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 
 import org.jsonschema2pojo.DefaultGenerationConfig;
@@ -22,10 +23,10 @@ public class JsonSchema2Pojo {
 	private static final String ROOT_CLASS_NAME = "Service";
 	private static final String EXPECTED_RESPONSE_JSON = "file:data/expectedResponse.json";
 
-	public static void main(String[] args) throws IOException {
+	void main() throws IOException {
 		JCodeModel codeModel = new JCodeModel();
 
-		URL source = new URL(EXPECTED_RESPONSE_JSON);
+		URL source = URI.create(EXPECTED_RESPONSE_JSON).toURL();
 
 		GenerationConfig config = new DefaultGenerationConfig() {
 			@Override
